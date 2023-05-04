@@ -46,50 +46,10 @@
         }
       }
     },
-    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/lib/chainlink/contracts/src/v0.8/vrf/VRFConsumerBase.sol": {
-      "lastModificationDate": 1683110013890,
-      "contentHash": "bb08cbad9803174359ab7b3f3ecdb55d",
-      "sourceName": "lib/chainlink/contracts/src/v0.8/vrf/VRFConsumerBase.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs"
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [
-        "lib/chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
-        "lib/chainlink/contracts/src/v0.8/vrf/VRFRequestIDBase.sol"
-      ],
-      "versionRequirement": "^0.8.0",
-      "artifacts": {
-        "VRFConsumerBase": {
-          "0.8.14+commit.80d49f37.Linux.gcc": "VRFConsumerBase.sol/VRFConsumerBase.json"
-        }
-      }
-    },
-    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/lib/chainlink/contracts/src/v0.8/vrf/VRFRequestIDBase.sol": {
-      "lastModificationDate": 1683110013940,
-      "contentHash": "e7fc1c36cb6d9f4b7d64c59dfd2c6211",
-      "sourceName": "lib/chainlink/contracts/src/v0.8/vrf/VRFRequestIDBase.sol",
+    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/lib/chainlink/contracts/src/v0.8/interfaces/VRFV2WrapperInterface.sol": {
+      "lastModificationDate": 1683110012069,
+      "contentHash": "6848d0e769b460011d3edf1a2047cc51",
+      "sourceName": "lib/chainlink/contracts/src/v0.8/interfaces/VRFV2WrapperInterface.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -118,8 +78,48 @@
       "imports": [],
       "versionRequirement": "^0.8.0",
       "artifacts": {
-        "VRFRequestIDBase": {
-          "0.8.14+commit.80d49f37.Linux.gcc": "VRFRequestIDBase.sol/VRFRequestIDBase.json"
+        "VRFV2WrapperInterface": {
+          "0.8.14+commit.80d49f37.Linux.gcc": "VRFV2WrapperInterface.sol/VRFV2WrapperInterface.json"
+        }
+      }
+    },
+    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/lib/chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol": {
+      "lastModificationDate": 1683110013970,
+      "contentHash": "c1e04192163ce7a235d9f3b86298ba65",
+      "sourceName": "lib/chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs"
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "lib/chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
+        "lib/chainlink/contracts/src/v0.8/interfaces/VRFV2WrapperInterface.sol"
+      ],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "VRFV2WrapperConsumerBase": {
+          "0.8.14+commit.80d49f37.Linux.gcc": "VRFV2WrapperConsumerBase.sol/VRFV2WrapperConsumerBase.json"
         }
       }
     },
@@ -631,8 +631,8 @@
       }
     },
     "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/ChanceGame.sol": {
-      "lastModificationDate": 1683119239043,
-      "contentHash": "7a786dcdb9635458ebe3ba8f3ea5c67d",
+      "lastModificationDate": 1683199332731,
+      "contentHash": "418b7262aae7fac7ecab4574f3cfe2ca",
       "sourceName": "src/ChanceGame.sol",
       "solcConfig": {
         "settings": {
@@ -661,8 +661,8 @@
       },
       "imports": [
         "lib/chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
-        "lib/chainlink/contracts/src/v0.8/vrf/VRFConsumerBase.sol",
-        "lib/chainlink/contracts/src/v0.8/vrf/VRFRequestIDBase.sol",
+        "lib/chainlink/contracts/src/v0.8/interfaces/VRFV2WrapperInterface.sol",
+        "lib/chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol",
         "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
         "lib/openzeppelin-contracts/contracts/security/Pausable.sol",
         "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",

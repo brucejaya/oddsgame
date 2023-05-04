@@ -102,4 +102,63 @@ interface IChanceGame {
      */
     error WithdrawExceedsFreeBalance();
 
+
+    //////////////////////////////////////////////
+    // BET RESOLUTION
+    //////////////////////////////////////////////
+
+    function placeBet(
+        uint256 betMask,
+        uint256 modulo
+    )
+        external
+        payable;
+
+
+    function refundBet(
+        uint256 betId
+    )
+        external
+        payable;
+ 
+    //////////////////////////////////////////////
+    // INTERNAL FUNCTIONS
+    //////////////////////////////////////////////
+
+    function _settleBet(
+        uint256 requestId,
+        uint256 randomNumber
+    )
+        internal;
+
+    //////////////////////////////////////////////
+    // GETTERS
+    //////////////////////////////////////////////
+
+    function getWealthTax(
+        uint256 amount
+    )
+        public
+        view
+        returns (uint256 wealthTax);
+
+    function getDiceWinAmount(
+        uint256 amount,
+        uint256 modulo,
+        uint256 rollUnder
+    )
+        public
+        view
+        returns (uint256 winAmount);
+
+    function getBalanceETH()
+        external
+        view
+        returns (uint256);
+
+    function getBalanceLINK()
+        external
+        view
+        returns (uint256);
+        
 }
