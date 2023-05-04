@@ -4,13 +4,13 @@ pragma solidity ^0.8.0;
 
 import './IChanceGame.sol';
 
-import 'chainlink/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol';
+import 'chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol';
 import 'openzeppelin-contracts/contracts/access/Ownable.sol';
 import 'openzeppelin-contracts/contracts/security/ReentrancyGuard.sol';
 import 'openzeppelin-contracts/contracts/security/Pausable.sol';
 import 'openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol';
 
-contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard, Pausable {
+contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, ReentrancyGuard, Pausable {
     
     ////////////////
     // USING
@@ -19,21 +19,47 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
     using SafeERC20 for IERC20;
 
     ////////////////
-    // CONSTANTS
+    // CHAINLINK
     ////////////////
     
     /** 
-     * @dev Chainlink VRF
+     * @dev Chainlink VRF callback gas limit 
+     *
+     * Depends on the number of requested values that you want sent to the * fulfillRandomWords() function. Test
+     * and adjust this limit based on the network that you select, the size of the request, and the processing 
+     * of the callback request in the fulfillRandomWords() function.
      */
-    address public constant LINK_TOKEN = 0x01BE23585060835E02B77ef475b0Cc51aA1e0709;// polygon 0xb0897686c545045aFc77CF20eC7A532E3120E0F1;
-    address public constant VRF_COORDINATOR = 0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B;// polygon 0x3d2341ADb2D31f1c5530cDC622016af293177AE0;
-    bytes32 public constant KEY_HASH = 0x2ed0feb3e7fd2022120aa84fab1945545a9f2ffc9076fd6156fa96eaff4c1311;// polygon 0xf86195cf7690c55907b2b611ebb7343a6f649bff128701cc542f0569e2c549da;
+    uint32 callbackGasLimit = 100000;
+
+    /** 
+     * @dev Chainlink VRF requested confirmations. The default is 3, but this can be set higher.
+     */
+    uint16 requestConfirmations = 3;
+    
+    /** 
+     * @dev Chainlink VRF amount of random numbers requested. Cannot exceed VRFV2Wrapper.getConfig().maxNumWords.
+     */
+    uint32 numWords = 1;
+
+    /** 
+     * @dev Chainlink LINK token Address - hardcoded for Sepolia
+     */
+    address linkAddress = 0x779877A7B0D9E8603169DdbD7836e478b4624789;
+
+    /** 
+     * @dev Chainlink VRF Wrapper address - hardcoded for Sepolia
+     */
+    address wrapperAddress = 0xab18414CD93297B0d12ac29E63Ca20f515b3DB46;
+    
+    ////////////////
+    // CONSTANTS
+    ////////////////
     
     /**
      * @dev Modulo is the number of equiprobable outcomes in a game so: 2 for coin flip, 6 for dice roll, 
      * 6*6 = 36 for double dice or 37 for roulette
      */
-    uint256 constant MAX_MODULO = 100;
+    uint256 internal immutable MAX_MODULO = 100;
 
     /** 
      * @dev Modulos below MAX_MASK_MODULO are checked against a bit mask, allowing betting on specific outcomes. 
@@ -44,19 +70,19 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
      * implementing population count efficiently for numbers that are up to 42 bits, and 40 is the highest multiple
      * of eight below 42.
      */
-    uint256 constant MAX_MASK_MODULO = 40;
+    uint256 internal immutable MAX_MASK_MODULO = 40;
 
     /**
      * @dev This is a check on bet mask overflow. Maximum mask is equivalent to number of possible binary outcomes for maximum modulo.
      */
-    uint256 constant MAX_BET_MASK = 2 ** MAX_MASK_MODULO;
+    uint256 internal immutable MAX_BET_MASK = 2 ** MAX_MASK_MODULO;
 
     /**
      * @dev These are constants taht make O(1) population count in placeBet possible.
      */
-    uint256 constant POPCNT_MULT = 0x0000000000002000000000100000000008000000000400000000020000000001;
-    uint256 constant POPCNT_MASK = 0x0001041041041041041041041041041041041041041041041041041041041041;
-    uint256 constant POPCNT_MODULO = 0x3F;
+    uint256 internal immutable POPCNT_MULT = 0x0000000000002000000000100000000008000000000400000000020000000001;
+    uint256 internal immutable POPCNT_MASK = 0x0001041041041041041041041041041041041041041041041041041041041041;
+    uint256 internal immutable POPCNT_MODULO = 0x3F;
 
     ////////////////
     // STATE
@@ -137,9 +163,7 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
     // CONSTRUCTOR
     ////////////////
 
-    constructor()
-        VRFConsumerBase(VRF_COORDINATOR, LINK_TOKEN)
-    {}
+    constructor() VRFV2WrapperConsumerBase(linkAddress, wrapperAddress) {}
    
     //////////////////////////////////////////////
     // BET RESOLUTION
@@ -209,7 +233,11 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
         ));
 
         // Request random number from Chainlink VRF. Store requestId for validation checks later.
+        // #v1 
         bytes32 requestId = requestRandomness(KEY_HASH, chainlinkFee);
+
+        // #v2
+        bytes32 requestId = requestRandomness(requestConfirmations, callbackGasLimit, numWords);
 
         // Map requestId to bet ID
         betMap[requestId] = betsLength;
@@ -220,6 +248,7 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
         betsLength++;
     }
 
+    // #v1 
     function fulfillRandomness(
         bytes32 requestId,
         uint256 randomness
@@ -227,10 +256,46 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
         internal
         override
     {
-        settleBet(requestId, randomness);
+        _settleBet(requestId, randomness);
     }
 
-    function settleBet(
+    // #v2 
+    function fulfillRandomWords()
+        internal
+    {
+        _settleBet(requestId, randomness);
+    }
+
+    function refundBet(
+        uint256 betId
+    )
+        external
+        nonReentrant
+        payable
+    {
+        Bet storage bet = bets[betId];
+
+        if (bet.amount == 0)
+            revert BetNotExist();
+        if (bet.isSettled)
+            revert BetAlreadySettled();
+        if (block.number < bet.placeBlockNumber + 43200)
+            revert RefundPeriodNotElapsed();
+
+        uint256 possibleWinAmount = getDiceWinAmount(bet.amount, bet.modulo, bet.rollUnder);
+        lockedInBets -= possibleWinAmount;
+        bet.isSettled = true;
+        bet.winAmount = bet.amount;
+        bet.gambler.transfer(bet.amount);
+
+        emit BetRefunded(betId, bet.gambler);
+    }
+ 
+    //////////////////////////////////////////////
+    // INTERNAL FUNCTIONS
+    //////////////////////////////////////////////
+
+    function _settleBet(
         bytes32 requestId,
         uint256 randomNumber
     )
@@ -288,31 +353,6 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
             gambler.transfer(winAmount);
     }
 
-    function refundBet(
-        uint256 betId
-    )
-        external
-        nonReentrant
-        payable
-    {
-        Bet storage bet = bets[betId];
-
-        if (bet.amount == 0)
-            revert BetNotExist();
-        if (bet.isSettled)
-            revert BetAlreadySettled();
-        if (block.number < bet.placeBlockNumber + 43200)
-            revert RefundPeriodNotElapsed();
-
-        uint256 possibleWinAmount = getDiceWinAmount(bet.amount, bet.modulo, bet.rollUnder);
-        lockedInBets -= possibleWinAmount;
-        bet.isSettled = true;
-        bet.winAmount = bet.amount;
-        bet.gambler.transfer(bet.amount);
-
-        emit BetRefunded(betId, bet.gambler);
-    }
- 
     //////////////////////////////////////////////
     // SETTERS
     //////////////////////////////////////////////
@@ -391,7 +431,7 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
     function getWealthTax(
         uint256 amount
     )
-        private
+        public
         view
         returns (uint256 wealthTax)
     {
@@ -403,7 +443,7 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
         uint256 modulo,
         uint256 rollUnder
     )
-        private
+        public
         view
         returns (uint256 winAmount)
     {
@@ -450,12 +490,12 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
     }
 
     function withdrawTokens(
-        address token_address
+        address tokenAddress
     )
         external
         onlyOwner
     {
-        IERC20(token_address).safeTransfer(owner(), IERC20(token_address).balanceOf(address(this)));
+        IERC20(tokenAddress).safeTransfer(owner(), IERC20(tokenAddress).balanceOf(address(this)));
     }
     
     function withdrawAll()
@@ -465,7 +505,7 @@ contract ChanceGame is IChanceGame, VRFConsumerBaseV2, Ownable, ReentrancyGuard,
         uint256 withdrawAmount = address(this).balance - lockedInBets;
         cumulativeWithdrawal += withdrawAmount;
         payable(msg.sender).transfer(withdrawAmount);
-        IERC20(LINK_TOKEN).safeTransfer(owner(), IERC20(LINK_TOKEN).balanceOf(address(this)));
+        IERC20(linkAddress).safeTransfer(owner(), IERC20(linkAddress).balanceOf(address(this)));
     }
     
     fallback()
