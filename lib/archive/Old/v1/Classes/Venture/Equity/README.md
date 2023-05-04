@@ -1,1 +1,0 @@
-The T-Rex (the implementation the `EquityToken.sol` is based on) is designed for a central identity registry. Instead of a central claim registry, Hypersurface uses a claim holder that is associated with each account, somewhat like a personal ID card. The source code to is located in the `ClaimVerifer.sol` file and needs to be merged with token logic.

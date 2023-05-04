@@ -1,0 +1,1052 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "BetAlreadySettled",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "BetExceedsModulo",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "BetMaskOutOfRange",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "BetNotExist",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "BetOutOfRange",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InsaneMaxBet",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InsaneMaxProfit",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "ModuloOutOfRange",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotEnoughLinkToken",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ProbablityOutOfRange",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "RefundPeriodNotElapsed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "WinExceedsCurrentFunds",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "WinExceedsMaxProfit",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "WithdrawExceedsBalance",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "WithdrawExceedsFreeBalance",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "betId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gambler",
+          "type": "address"
+        }
+      ],
+      "name": "BetPlaced",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "betId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gambler",
+          "type": "address"
+        }
+      ],
+      "name": "BetRefunded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "betId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gambler",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint8",
+          "name": "modulo",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "rollUnder",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "mask",
+          "type": "uint40"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "outcome",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "winAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "BetSettled",
+      "type": "event"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "ast": {
+    "absolutePath": "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/IChanceGame.sol",
+    "id": 23409,
+    "exportedSymbols": {
+      "IChanceGame": [
+        23408
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "35:2315:17",
+    "nodes": [
+      {
+        "id": 23323,
+        "nodeType": "PragmaDirective",
+        "src": "35:23:17",
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 23408,
+        "nodeType": "ContractDefinition",
+        "src": "62:2288:17",
+        "nodes": [
+          {
+            "id": 23330,
+            "nodeType": "EventDefinition",
+            "src": "211:61:17",
+            "anonymous": false,
+            "documentation": {
+              "id": 23324,
+              "nodeType": "StructuredDocumentation",
+              "src": "154:51:17",
+              "text": " @dev A new bet has been placed"
+            },
+            "eventSelector": "71db8f0b94a6ae898ff1583920da121c8f18ea26ad96353276843685325262e1",
+            "name": "BetPlaced",
+            "nameLocation": "217:9:17",
+            "parameters": {
+              "id": 23329,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23326,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "betId",
+                  "nameLocation": "240:5:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23330,
+                  "src": "227:18:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23325,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "227:4:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23328,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "gambler",
+                  "nameLocation": "263:7:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23330,
+                  "src": "247:23:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23327,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "247:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "226:45:17"
+            }
+          },
+          {
+            "id": 23349,
+            "nodeType": "EventDefinition",
+            "src": "338:157:17",
+            "anonymous": false,
+            "documentation": {
+              "id": 23331,
+              "nodeType": "StructuredDocumentation",
+              "src": "280:55:17",
+              "text": " @dev A placed bet has been settled"
+            },
+            "eventSelector": "6cff91e6d6b58d75f3dabb17af3f33987150949dd8c24c48bf0d8d685f474ff9",
+            "name": "BetSettled",
+            "nameLocation": "344:10:17",
+            "parameters": {
+              "id": 23348,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23333,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "betId",
+                  "nameLocation": "368:5:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23349,
+                  "src": "355:18:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23332,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "355:4:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23335,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "gambler",
+                  "nameLocation": "391:7:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23349,
+                  "src": "375:23:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23334,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "375:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23337,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "405:6:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23349,
+                  "src": "400:11:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23336,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "400:4:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23339,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "modulo",
+                  "nameLocation": "427:6:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23349,
+                  "src": "413:20:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 23338,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:5:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23341,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "rollUnder",
+                  "nameLocation": "441:9:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23349,
+                  "src": "435:15:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 23340,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "435:5:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23343,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "mask",
+                  "nameLocation": "459:4:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23349,
+                  "src": "452:11:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 23342,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "452:6:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23345,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "outcome",
+                  "nameLocation": "470:7:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23349,
+                  "src": "465:12:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23344,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "465:4:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23347,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "winAmount",
+                  "nameLocation": "484:9:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23349,
+                  "src": "479:14:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23346,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "479:4:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "354:140:17"
+            }
+          },
+          {
+            "id": 23356,
+            "nodeType": "EventDefinition",
+            "src": "594:63:17",
+            "anonymous": false,
+            "documentation": {
+              "id": 23350,
+              "nodeType": "StructuredDocumentation",
+              "src": "504:84:17",
+              "text": " @dev A placed bet that could not be fulfilled has been refunded"
+            },
+            "eventSelector": "82ed3ad28d47d7fc600c710a2000a6940ee285829493f6a21969b1ccad85ec70",
+            "name": "BetRefunded",
+            "nameLocation": "600:11:17",
+            "parameters": {
+              "id": 23355,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23352,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "betId",
+                  "nameLocation": "625:5:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23356,
+                  "src": "612:18:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23351,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "612:4:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23354,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "gambler",
+                  "nameLocation": "648:7:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23356,
+                  "src": "632:23:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23353,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "632:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "611:45:17"
+            }
+          },
+          {
+            "id": 23359,
+            "nodeType": "ErrorDefinition",
+            "src": "786:27:17",
+            "documentation": {
+              "id": 23357,
+              "nodeType": "StructuredDocumentation",
+              "src": "727:53:17",
+              "text": " @dev Not enough LINK in contract"
+            },
+            "errorSelector": "c96e5ace",
+            "name": "NotEnoughLinkToken",
+            "nameLocation": "792:18:17",
+            "parameters": {
+              "id": 23358,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "810:2:17"
+            }
+          },
+          {
+            "id": 23362,
+            "nodeType": "ErrorDefinition",
+            "src": "881:29:17",
+            "documentation": {
+              "id": 23360,
+              "nodeType": "StructuredDocumentation",
+              "src": "821:54:17",
+              "text": " @dev Win probability out of range"
+            },
+            "errorSelector": "0c9e36d4",
+            "name": "ProbablityOutOfRange",
+            "nameLocation": "887:20:17",
+            "parameters": {
+              "id": 23361,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "907:2:17"
+            }
+          },
+          {
+            "id": 23367,
+            "nodeType": "ErrorDefinition",
+            "src": "994:39:17",
+            "documentation": {
+              "id": 23363,
+              "nodeType": "StructuredDocumentation",
+              "src": "918:70:17",
+              "text": " @dev Modulo is out of range. Either over or under"
+            },
+            "errorSelector": "505e5675",
+            "name": "ModuloOutOfRange",
+            "nameLocation": "1000:16:17",
+            "parameters": {
+              "id": 23366,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23365,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1025:6:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23367,
+                  "src": "1017:14:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23364,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1017:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1016:16:17"
+            }
+          },
+          {
+            "id": 23372,
+            "nodeType": "ErrorDefinition",
+            "src": "1121:36:17",
+            "documentation": {
+              "id": 23368,
+              "nodeType": "StructuredDocumentation",
+              "src": "1041:74:17",
+              "text": " @dev Bet amount is out of range. Either over or under"
+            },
+            "errorSelector": "93afd5ee",
+            "name": "BetOutOfRange",
+            "nameLocation": "1127:13:17",
+            "parameters": {
+              "id": 23371,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23370,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1149:6:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23372,
+                  "src": "1141:14:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23369,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1141:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1140:16:17"
+            }
+          },
+          {
+            "id": 23377,
+            "nodeType": "ErrorDefinition",
+            "src": "1243:40:17",
+            "documentation": {
+              "id": 23373,
+              "nodeType": "StructuredDocumentation",
+              "src": "1165:72:17",
+              "text": " @dev Bet mask is out of range. Either over or under"
+            },
+            "errorSelector": "396c87a7",
+            "name": "BetMaskOutOfRange",
+            "nameLocation": "1249:17:17",
+            "parameters": {
+              "id": 23376,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23375,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1275:6:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23377,
+                  "src": "1267:14:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23374,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1267:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1266:16:17"
+            }
+          },
+          {
+            "id": 23380,
+            "nodeType": "ErrorDefinition",
+            "src": "1368:25:17",
+            "documentation": {
+              "id": 23378,
+              "nodeType": "StructuredDocumentation",
+              "src": "1291:71:17",
+              "text": " @dev High modulo range, betMask larger than modulo"
+            },
+            "errorSelector": "79471aec",
+            "name": "BetExceedsModulo",
+            "nameLocation": "1374:16:17",
+            "parameters": {
+              "id": 23379,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1390:2:17"
+            }
+          },
+          {
+            "id": 23383,
+            "nodeType": "ErrorDefinition",
+            "src": "1478:28:17",
+            "documentation": {
+              "id": 23381,
+              "nodeType": "StructuredDocumentation",
+              "src": "1401:71:17",
+              "text": " @dev Potentional win amount exceeds maximum profit"
+            },
+            "errorSelector": "77b3ef5e",
+            "name": "WinExceedsMaxProfit",
+            "nameLocation": "1484:19:17",
+            "parameters": {
+              "id": 23382,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1503:2:17"
+            }
+          },
+          {
+            "id": 23386,
+            "nodeType": "ErrorDefinition",
+            "src": "1592:31:17",
+            "documentation": {
+              "id": 23384,
+              "nodeType": "StructuredDocumentation",
+              "src": "1514:72:17",
+              "text": " @dev Unable to accept bet due to insufficient funds"
+            },
+            "errorSelector": "3886600b",
+            "name": "WinExceedsCurrentFunds",
+            "nameLocation": "1598:22:17",
+            "parameters": {
+              "id": 23385,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1620:2:17"
+            }
+          },
+          {
+            "id": 23389,
+            "nodeType": "ErrorDefinition",
+            "src": "1681:20:17",
+            "documentation": {
+              "id": 23387,
+              "nodeType": "StructuredDocumentation",
+              "src": "1631:44:17",
+              "text": " @dev Bet does not exist"
+            },
+            "errorSelector": "5c21ed8d",
+            "name": "BetNotExist",
+            "nameLocation": "1687:11:17",
+            "parameters": {
+              "id": 23388,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1698:2:17"
+            }
+          },
+          {
+            "id": 23392,
+            "nodeType": "ErrorDefinition",
+            "src": "1763:26:17",
+            "documentation": {
+              "id": 23390,
+              "nodeType": "StructuredDocumentation",
+              "src": "1709:48:17",
+              "text": " @dev Bet is already settled"
+            },
+            "errorSelector": "05d09e5f",
+            "name": "BetAlreadySettled",
+            "nameLocation": "1769:17:17",
+            "parameters": {
+              "id": 23391,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1786:2:17"
+            }
+          },
+          {
+            "id": 23395,
+            "nodeType": "ErrorDefinition",
+            "src": "1876:31:17",
+            "documentation": {
+              "id": 23393,
+              "nodeType": "StructuredDocumentation",
+              "src": "1797:73:17",
+              "text": " @dev Wait after placing bet before requesting refund"
+            },
+            "errorSelector": "64788a2f",
+            "name": "RefundPeriodNotElapsed",
+            "nameLocation": "1882:22:17",
+            "parameters": {
+              "id": 23394,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1904:2:17"
+            }
+          },
+          {
+            "id": 23398,
+            "nodeType": "ErrorDefinition",
+            "src": "1985:21:17",
+            "documentation": {
+              "id": 23396,
+              "nodeType": "StructuredDocumentation",
+              "src": "1915:64:17",
+              "text": " @dev Must be a sane number for maxBetAmount"
+            },
+            "errorSelector": "c7544a2d",
+            "name": "InsaneMaxBet",
+            "nameLocation": "1991:12:17",
+            "parameters": {
+              "id": 23397,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2003:2:17"
+            }
+          },
+          {
+            "id": 23401,
+            "nodeType": "ErrorDefinition",
+            "src": "2082:24:17",
+            "documentation": {
+              "id": 23399,
+              "nodeType": "StructuredDocumentation",
+              "src": "2014:62:17",
+              "text": " @dev Must be a sane number for _maxProfit"
+            },
+            "errorSelector": "5221461f",
+            "name": "InsaneMaxProfit",
+            "nameLocation": "2088:15:17",
+            "parameters": {
+              "id": 23400,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2103:2:17"
+            }
+          },
+          {
+            "id": 23404,
+            "nodeType": "ErrorDefinition",
+            "src": "2183:31:17",
+            "documentation": {
+              "id": 23402,
+              "nodeType": "StructuredDocumentation",
+              "src": "2114:63:17",
+              "text": " @dev Withdrawal amount larger than balance"
+            },
+            "errorSelector": "a666aade",
+            "name": "WithdrawExceedsBalance",
+            "nameLocation": "2189:22:17",
+            "parameters": {
+              "id": 23403,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2211:2:17"
+            }
+          },
+          {
+            "id": 23407,
+            "nodeType": "ErrorDefinition",
+            "src": "2310:35:17",
+            "documentation": {
+              "id": 23405,
+              "nodeType": "StructuredDocumentation",
+              "src": "2222:82:17",
+              "text": " @dev Withdrawal amount larger than balance minus lockedInBets"
+            },
+            "errorSelector": "6df2b55c",
+            "name": "WithdrawExceedsFreeBalance",
+            "nameLocation": "2316:26:17",
+            "parameters": {
+              "id": 23406,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2342:2:17"
+            }
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IChanceGame",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          23408
+        ],
+        "name": "IChanceGame",
+        "nameLocation": "72:11:17",
+        "scope": 23409,
+        "usedErrors": [
+          23359,
+          23362,
+          23367,
+          23372,
+          23377,
+          23380,
+          23383,
+          23386,
+          23389,
+          23392,
+          23395,
+          23398,
+          23401,
+          23404,
+          23407
+        ]
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 17
+}

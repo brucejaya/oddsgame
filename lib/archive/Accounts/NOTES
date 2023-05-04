@@ -1,7 +1,0 @@
-https://0xjac.github.io/EIPs/EIPS/eip-1271 // Signature validation method
-https://github.com/ethereum/EIPs/issues/780 // Claims registry
-https://eips.ethereum.org/EIPS/eip-712 // Sign off chain claim
-https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1812.md // Verifiable off chain claims
-
-
-https://docs.openzeppelin.com/contracts/3.x/erc1155 // Multi token standard
