@@ -41,16 +41,6 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
      */
     uint32 _numWords = 1;
 
-    /** 
-     * @dev Chainlink LINK token Address - hardcoded for Sepolia
-     */
-    address _linkAddress = 0x779877A7B0D9E8603169DdbD7836e478b4624789;
-
-    /** 
-     * @dev Chainlink VRF Wrapper address - hardcoded for Sepolia
-     */
-    address _wrapperAddress = 0xab18414CD93297B0d12ac29E63Ca20f515b3DB46;
-    
     ////////////////
     // CONSTANTS
     ////////////////
@@ -167,7 +157,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     // CONSTRUCTOR
     ////////////////
 
-    constructor() VRFV2WrapperConsumerBase(_linkAddress, _wrapperAddress) {}
+    constructor(address _linkAddress, address _wrapperAddress) VRFV2WrapperConsumerBase(_linkAddress, _wrapperAddress) {}
    
     //////////////////////////////////////////////
     // BET RESOLUTION
