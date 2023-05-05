@@ -291,7 +291,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     {
         for (uint8 i = 0; i < _openBetsByUser[user].length; i++)
             if (_openBetsByUser[user][i] == betId)
-                delete _openBetsByUser[user][i];
+                _openBetsByUser[user][i].pop();
     }
 
     /**
