@@ -9,17 +9,17 @@ interface IChanceGame {
     ////////////////
 
     /**
-     * @dev A new bet has been placed
+     * @dev A new bet has been placed.
      */
     event BetPlaced(uint indexed betId, address indexed gambler);
 
     /**
-     * @dev A placed bet has been settled
+     * @dev A placed bet has been settled.
      */
 	event BetSettled(uint indexed betId, address indexed gambler, uint amount, uint8 indexed modulo, uint8 rollUnder, uint40 mask, uint outcome, uint winAmount);
 	
     /**
-     * @dev A placed bet that could not be fulfilled has been refunded
+     * @dev A placed bet that could not be fulfilled has been refunded.
      */
     event BetRefunded(uint indexed betId, address indexed gambler);
 	
@@ -28,137 +28,94 @@ interface IChanceGame {
     ////////////////
 
     /**
-     * @dev Not enough LINK in contract
+     * @dev Not enough LINK in contract.
      */
     error NotEnoughLinkToken();
 
     /**
-     * @dev Win probability out of range
+     * @dev Win probability out of range.
      */
     error ProbablityOutOfRange();
 
     /**
-     * @dev Modulo is out of range. Either over or under
+     * @dev Modulo is out of range. Either over or under.
      */
     error ModuloOutOfRange(uint256 amount);
 
     /**
-     * @dev Bet amount is out of range. Either over or under
+     * @dev Bet amount is out of range. Either over or under.
      */
     error BetOutOfRange(uint256 amount);
 
     /**
-     * @dev Bet mask is out of range. Either over or under
+     * @dev Bet mask is out of range. Either over or under.
      */
     error BetMaskOutOfRange(uint256 amount);
 
     /**
-     * @dev High modulo range, betMask larger than modulo
+     * @dev High modulo range, betMask larger than modulo.
      */
     error BetExceedsModulo();
 
     /**
-     * @dev Potentional win amount exceeds maximum profit
+     * @dev Potentional win amount exceeds maximum profit.
      */
     error WinExceedsMaxProfit();
 
     /**
-     * @dev Unable to accept bet due to insufficient funds
+     * @dev Unable to accept bet due to insufficient funds.
      */
     error WinExceedsCurrentFunds();
 
     /**
-     * @dev Bet does not exist
+     * @dev Bet does not exist.
      */
     error BetNotExist();
 
     /**
-     * @dev Bet is already settled
+     * @dev Bet is already settled.
      */
     error BetAlreadySettled();
 
     /**
-     * @dev Wait after placing bet before requesting refund
+     * @dev Wait after placing bet before requesting refund.
      */
     error RefundPeriodNotElapsed();
 
     /**
-     * @dev Must be a sane number for maxBetAmount
+     * @dev Must be a sane number for maxBetAmount.
      */
     error InsaneMaxBet();
 
     /**
-     * @dev Must be a sane number for _maxProfit
+     * @dev Must be a sane number for _maxProfit.
      */
     error InsaneMaxProfit();
 
     /**
-     * @dev Withdrawal amount larger than balance
+     * @dev Withdrawal amount larger than balance.
      */
     error WithdrawExceedsBalance();
 
     /**
-     * @dev Withdrawal amount larger than balance minus lockedInBets
+     * @dev Withdrawal amount larger than balance minus lockedInBets.
      */
     error WithdrawExceedsFreeBalance();
-
 
     //////////////////////////////////////////////
     // BET RESOLUTION
     //////////////////////////////////////////////
 
-    function placeBet(
-        uint256 betMask,
-        uint256 modulo
-    )
-        external
-        payable;
-
-
-    function refundBet(
-        uint256 betId
-    )
-        external
-        payable;
+    function placeBet(uint256 betMask, uint256 modulo) external payable;
+    function refundBet(uint256 betId) external payable;
  
-    //////////////////////////////////////////////
-    // INTERNAL FUNCTIONS
-    //////////////////////////////////////////////
-
-    function _settleBet(
-        uint256 requestId,
-        uint256 randomNumber
-    )
-        internal;
-
     //////////////////////////////////////////////
     // GETTERS
     //////////////////////////////////////////////
 
-    function getWealthTax(
-        uint256 amount
-    )
-        public
-        view
-        returns (uint256 wealthTax);
-
-    function getDiceWinAmount(
-        uint256 amount,
-        uint256 modulo,
-        uint256 rollUnder
-    )
-        public
-        view
-        returns (uint256 winAmount);
-
-    function getBalanceETH()
-        external
-        view
-        returns (uint256);
-
-    function getBalanceLINK()
-        external
-        view
-        returns (uint256);
+    function getWealthTax(uint256 amount) external view returns (uint256 wealthTax);
+    function getDiceWinAmount(uint256 amount, uint256 modulo, uint256 rollUnder) external view returns (uint256 winAmount);
+    function getBalanceETH() external view returns (uint256);
+    function getBalanceLINK() external view returns (uint256);
         
 }

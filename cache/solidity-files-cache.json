@@ -631,8 +631,8 @@
       }
     },
     "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/ChanceGame.sol": {
-      "lastModificationDate": 1683199332731,
-      "contentHash": "418b7262aae7fac7ecab4574f3cfe2ca",
+      "lastModificationDate": 1683725212511,
+      "contentHash": "2ad6c56dec4011fb59d4900a0e875131",
       "sourceName": "src/ChanceGame.sol",
       "solcConfig": {
         "settings": {
@@ -680,8 +680,8 @@
       }
     },
     "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/IChanceGame.sol": {
-      "lastModificationDate": 1683118589190,
-      "contentHash": "4357c63e54aaea5dcf9d6dad5e74b42c",
+      "lastModificationDate": 1683725033393,
+      "contentHash": "3b3097cccb4b5f6476ebfaa9ac590476",
       "sourceName": "src/IChanceGame.sol",
       "solcConfig": {
         "settings": {
@@ -716,10 +716,10 @@
         }
       }
     },
-    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/test/Contract.t.sol": {
-      "lastModificationDate": 1657113190650,
-      "contentHash": "848ba83feec29a2e4d286c118102ae20",
-      "sourceName": "test/Contract.t.sol",
+    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/test/Utils/utils.sol": {
+      "lastModificationDate": 1683204767319,
+      "contentHash": "4dca76a7817964bc2692e78055d2a131",
+      "sourceName": "test/Utils/utils.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -753,10 +753,10 @@
         "lib/forge-std/src/console.sol",
         "lib/forge-std/src/console2.sol"
       ],
-      "versionRequirement": "^0.8.13",
+      "versionRequirement": ">=0.8.0",
       "artifacts": {
-        "ContractTest": {
-          "0.8.14+commit.80d49f37.Linux.gcc": "Contract.t.sol/ContractTest.json"
+        "Utils": {
+          "0.8.14+commit.80d49f37.Linux.gcc": "utils.sol/Utils.json"
         }
       }
     }

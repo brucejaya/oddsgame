@@ -23,7 +23,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     ////////////////
     
     /** 
-     * @dev Chainlink VRF callback gas limit 
+     * @dev Chainlink VRF gas limit.
      *
      * Depends on the number of requested values that you want sent to the * fulfillRandomWords() function. Test
      * and adjust this limit based on the network that you select, the size of the request, and the processing 
@@ -47,7 +47,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     
     /**
      * @dev Modulo is the number of equiprobable outcomes in a game so: 2 for coin flip, 6 for dice roll, 
-     * 6*6 = 36 for double dice or 37 for roulette
+     * 6*6 = 36 for double dice or 37 for roulette.
      */
     uint256 internal constant MAX_MODULO = 100;
 
@@ -79,12 +79,12 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     ////////////////
     
     /**
-     * @dev Chainlink fee per bet
+     * @dev Chainlink fee per bet.
      */
     uint256 public _chainlinkFee = 0.1 * 10 ** 18;
 
     /**
-     * @dev Each bet is deducted 1% in favor of the house
+     * @dev Each bet is deducted 1% in favor of the house.
      */
     uint256 public _houseEdgePercent = 1;
     
@@ -127,17 +127,17 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /**
-     * @dev List of bets
+     * @dev List of bets.
      */
     Bet[] public _bets;
 
     /**
-     * @dev Mapping from Chainlink VRF requestId to bet index
+     * @dev Mapping from Chainlink VRF requestId to bet index.
      */
     mapping(uint256 => uint256) public _betsByRequestId;
 
     /**
-     * @dev Mapping from user to bet index where isSettled is false
+     * @dev Mapping from user to bet index where isSettled is false.
      */
     mapping(address => uint256[]) _openBetsByUser;
 
@@ -148,7 +148,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
 
     /**
      * @dev Sum of all historical deposits and withdrawals. Used for calculating profitability. 
-     * Profit = Balance - _betAmountCumulativeDeposit + _betAmountCumulativeWithdrawal
+     * Profit = Balance - _betAmountCumulativeDeposit + _betAmountCumulativeWithdrawal.
      */
     uint256 public _betAmountCumulativeDeposit;
     uint256 public _betAmountCumulativeWithdrawal;
@@ -164,7 +164,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     //////////////////////////////////////////////
 
     /**
-     * @dev Place a new bet
+     * @dev Place a new bet.
      * @param betMask The numeric value of the bet. For coinflip, 1 for heads, 2 for tails, etc.
      * @param modulo The modulo for the game. 2 for coinflip. 6 for dice, etc.
      */
@@ -214,10 +214,10 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
         if (address(this).balance < _betAmountLockIn + possibleWinAmount)
             revert WinExceedsCurrentFunds();
 
-        // Update locked funds
+        // Update locked funds.
         _betAmountLockIn += possibleWinAmount;
 
-        // Store bet in bet list
+        // Store bet in bet list.
         _bets.push(Bet(
             {
                 amount: amount,
@@ -236,17 +236,17 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
         // Request random number from Chainlink VRF. Store requestId for validation checks later.
         uint256 requestId = requestRandomness(_callbackGasLimit, _requestConfirmations, _numWords);
 
-        // Add to mappings
+        // Add to mappings.
         _betsByRequestId[requestId] = _bets.length;
         _openBetsByUser[msg.sender].push(_bets.length);
 
-        // Record bet in event logs
+        // Record bet in event logs.
         emit BetPlaced(_bets.length, msg.sender);
     }
 
     /**
-     * @dev Refund a bet that has not been executed
-     * @param betId The id of the bet to be refunded
+     * @dev Refund a bet that has not been executed.
+     * @param betId The id of the bet to be refunded.
      */
     function refundBet(
         uint256 betId
@@ -279,9 +279,9 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     //////////////////////////////////////////////
 
     /**
-     * @dev Iterate through open bets by user are remove the betId
-     * @param user The address of the user who's open bets are being updated
-     * @param betId The id of the bet
+     * @dev Iterate through open bets by user are remove the betId.
+     * @param user The address of the user who's open bets are being updated.
+     * @param betId The id of the bet.
      */
     function _removeFromOpenBets(
         address user,
@@ -291,13 +291,13 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     {
         for (uint8 i = 0; i < _openBetsByUser[user].length; i++)
             if (_openBetsByUser[user][i] == betId)
-                _openBetsByUser[user][i].pop();
+                delete _openBetsByUser[user][i];
     }
 
     /**
-     * @dev The return function for Chainlink VRF wraps the _settleBet
-     * @param requestId Chainlink VRF request id used to identity the bet to resolve
-     * @param randomWords Array of random ints returned by chainlink 
+     * @dev The return function for Chainlink VRF wraps the _settleBet bet resolution function.
+     * @param requestId Chainlink VRF request id used to identity the bet to resolve.
+     * @param randomWords Array of random ints returned by chainlink.
      */
     function fulfillRandomWords(
         uint256 requestId,
@@ -310,9 +310,9 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /**
-     * @dev Resolves a bet once random values have been recieved either for a win or loss
-     * @param requestId Chainlink VRF request id used to identity the bet to resolve
-     * @param randomWords Array of random ints returned by chainlink 
+     * @dev Resolves a bet once random values have been recieved either for a win or loss.
+     * @param requestId Chainlink VRF request id used to identity the bet to resolve.
+     * @param randomNumber The random int returned by chainlink.
      */
     function _settleBet(
         uint256 requestId,
@@ -377,8 +377,8 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     //////////////////////////////////////////////
 
     /** 
-     * @dev Returns an array of bet ids for the open bets of a user
-     * @param user The address of the user to query 
+     * @dev Returns an array of bet ids for the open bets of a user.
+     * @param user The address of the user to query.
      */
     function getOpenBetsByUser(
         address user
@@ -391,8 +391,8 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Returns important fields from a bet for display
-     * @param betId The id of the bet field to query 
+     * @dev Returns important fields from a bet for display.
+     * @param betId The id of the bet field to query.
      */
     function getBet(
         uint256 betId
@@ -400,13 +400,13 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
         public
         view
         returns (
-            uint256 amount_;
-            uint8 modulo_;
-            uint8 rollUnder_;
-            uint256 placeBlockNumber_;
-            bool isSettled_;
-            uint256 outcome_;
-            uint256 winAmount_;
+            uint256 amount_,
+            uint8 modulo_,
+            uint8 rollUnder_,
+            uint256 placeBlockNumber_,
+            bool isSettled_,
+            uint256 outcome_,
+            uint256 winAmount_
         )
     {
         amount_ = _bets[betId].amount;
@@ -419,8 +419,8 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Returns the wealth tax for based of the bet amount
-     * @param amount The amount of funds bet
+     * @dev Returns the wealth tax for based of the bet amount.
+     * @param amount The amount of funds bet.
      */
     function getWealthTax(
         uint256 amount
@@ -433,10 +433,10 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
  
     /** 
-     * @dev Returns the payout for a bet based on the odds
-     * @param amount The amount placed on the bet
-     * @param modulo #TODO
-     * @param rollUnder #TODO
+     * @dev Returns the payout for a bet based on the odds.
+     * @param amount The amount placed on the bet. See struct `Bet`.
+     * @param modulo The modulo the the bet. See struct `Bet`.
+     * @param rollUnder The roll under of the bet. See struct `Bet`.
      */
     function getDiceWinAmount(
         uint256 amount,
@@ -455,7 +455,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Returns current eth balance of this contract
+     * @dev Returns current eth balance of this contract.
      */
     function getBalanceETH()
         external
@@ -466,7 +466,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Returns current LINK token balance of this contract
+     * @dev Returns current LINK token balance of this contract.
      */
     function getBalanceLINK()
         external
@@ -481,8 +481,8 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     //////////////////////////////////////////////
 
     /** 
-     * @dev Sets the percent of profits for the house on winning bets 
-     * @param houseEdgePercent The percentage to be taken on winning bets
+     * @dev Sets the percent of profits for the house on winning bets.
+     * @param houseEdgePercent The percentage to be taken on winning bets.
      */
     function setHouseEdge(
         uint256 houseEdgePercent
@@ -494,8 +494,8 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Sets the minimum bet amount 
-     * @param minBetAmount The minimum bet in wei
+     * @dev Sets the minimum bet amount.
+     * @param minBetAmount The minimum bet in wei.
      */
     function setMinBetAmount(
         uint256 minBetAmount
@@ -507,8 +507,8 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Sets the maximum bet amount 
-     * @param maxBetAmount The maximum bet in wei
+     * @dev Sets the maximum bet amount.
+     * @param maxBetAmount The maximum bet in wei.
      */
     function setMaxBetAmount(
         uint256 maxBetAmount
@@ -522,8 +522,8 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev 
-     * @param maxProfit 
+     * @dev Sets the maximum profit that any bet can return.
+     * @param maxProfit The maximum bet value in wei.
      */
     function setMaxProfit(
         uint256 maxProfit
@@ -537,7 +537,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Sets the threshold for each time wealth tax should be increased
+     * @dev Sets the threshold for each time wealth tax should be increased.
      * @param wealthTaxIncrementThreshold The multiple for the threshold, For example 2000, 4000, 6000. 
      */
     function setWealthTaxIncrementThreshold(
@@ -550,8 +550,8 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
     
     /** 
-     * @dev Sets the amount by which wealth tax should be increased every time it passes a threshold
-     * @param wealthTaxIncrementPercent The percentage by which it should increase each threhsold, for example 2%, 4%, 6%, etc
+     * @dev Sets the amount by which wealth tax should be increased every time it passes a threshold.
+     * @param wealthTaxIncrementPercent The percentage by which it should increase each threhsold, for example 2%, 4%, 6%, etc.
      */
     function setWealthTaxIncrementPercent(
         uint256 wealthTaxIncrementPercent
@@ -567,9 +567,9 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     //////////////////////////////////////////////
 
     /** 
-     * @dev Withdraw eth from the contract
-     * @param beneficiary Account to pay
-     * @param withdrawAmount Amount to pay to beneficiary
+     * @dev Withdraw eth from the contract.
+     * @param beneficiary Account to pay.
+     * @param withdrawAmount Amount to pay to beneficiary.
      */
     function withdrawFunds(
         address payable beneficiary,
@@ -592,7 +592,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Withdraw tokens from the contract
+     * @dev Withdraw tokens from the contract.
      */
     function withdrawTokens(
         address tokenAddress
@@ -604,7 +604,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
     }
 
     /** 
-     * @dev Withdraw all tokens and funds from the contract
+     * @dev Withdraw all tokens and funds from the contract.
      */
     function withdrawAll()
         external
@@ -613,7 +613,7 @@ contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, Reentranc
         uint256 withdrawAmount = address(this).balance - _betAmountLockIn;
         _betAmountCumulativeWithdrawal += withdrawAmount;
         payable(msg.sender).transfer(withdrawAmount);
-        IERC20(_linkAddress).safeTransfer(owner(), IERC20(_linkAddress).balanceOf(address(this)));
+        LINK.transfer(owner(), LINK.balanceOf(address(this)));
     }
     
     fallback()
