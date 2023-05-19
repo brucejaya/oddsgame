@@ -630,10 +630,10 @@
         }
       }
     },
-    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/ChanceGame.sol": {
+    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/OddsGame.sol": {
       "lastModificationDate": 1683725212511,
       "contentHash": "2ad6c56dec4011fb59d4900a0e875131",
-      "sourceName": "src/ChanceGame.sol",
+      "sourceName": "src/OddsGame.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -670,19 +670,19 @@
         "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Address.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
-        "src/IChanceGame.sol"
+        "src/IOddsGame.sol"
       ],
       "versionRequirement": "^0.8.0",
       "artifacts": {
-        "ChanceGame": {
-          "0.8.14+commit.80d49f37.Linux.gcc": "ChanceGame.sol/ChanceGame.json"
+        "OddsGame": {
+          "0.8.14+commit.80d49f37.Linux.gcc": "OddsGame.sol/OddsGame.json"
         }
       }
     },
-    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/IChanceGame.sol": {
+    "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/IOddsGame.sol": {
       "lastModificationDate": 1683725033393,
       "contentHash": "3b3097cccb4b5f6476ebfaa9ac590476",
-      "sourceName": "src/IChanceGame.sol",
+      "sourceName": "src/IOddsGame.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -711,8 +711,8 @@
       "imports": [],
       "versionRequirement": "^0.8.0",
       "artifacts": {
-        "IChanceGame": {
-          "0.8.14+commit.80d49f37.Linux.gcc": "IChanceGame.sol/IChanceGame.json"
+        "IOddsGame": {
+          "0.8.14+commit.80d49f37.Linux.gcc": "IOddsGame.sol/IOddsGame.json"
         }
       }
     },

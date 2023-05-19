@@ -907,19 +907,19 @@
     "withdrawTokens(address)": "49df728c"
   },
   "ast": {
-    "absolutePath": "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/ChanceGame.sol",
+    "absolutePath": "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/OddsGame.sol",
     "id": 23426,
     "exportedSymbols": {
       "Address": [
         22353
       ],
-      "ChanceGame": [
+      "OddsGame": [
         23425
       ],
       "Context": [
         22375
       ],
-      "IChanceGame": [
+      "IOddsGame": [
         23552
       ],
       "IERC20": [
@@ -965,8 +965,8 @@
         "id": 22378,
         "nodeType": "ImportDirective",
         "src": "62:27:16",
-        "absolutePath": "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/IChanceGame.sol",
-        "file": "./IChanceGame.sol",
+        "absolutePath": "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/IOddsGame.sol",
+        "file": "./IOddsGame.sol",
         "nameLocation": "-1:-1:-1",
         "scope": 23426,
         "sourceUnit": 23553,
@@ -1941,7 +1941,7 @@
             "id": 22484,
             "nodeType": "StructDefinition",
             "src": "4205:754:16",
-            "canonicalName": "ChanceGame.Bet",
+            "canonicalName": "OddsGame.Bet",
             "members": [
               {
                 "constant": false,
@@ -2240,7 +2240,7 @@
             "storageLocation": "default",
             "typeDescriptions": {
               "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-              "typeString": "struct ChanceGame.Bet[]"
+              "typeString": "struct OddsGame.Bet[]"
             },
             "typeName": {
               "baseType": {
@@ -2257,7 +2257,7 @@
                 "src": "5012:3:16",
                 "typeDescriptions": {
                   "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                  "typeString": "struct ChanceGame.Bet"
+                  "typeString": "struct OddsGame.Bet"
                 }
               },
               "id": 22488,
@@ -2265,7 +2265,7 @@
               "src": "5012:5:16",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage_ptr",
-                "typeString": "struct ChanceGame.Bet[]"
+                "typeString": "struct OddsGame.Bet[]"
               }
             },
             "visibility": "public"
@@ -2704,16 +2704,16 @@
                               "referencedDeclaration": -28,
                               "src": "6619:4:16",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                                "typeString": "contract ChanceGame"
+                                "typeIdentifier": "t_contract$_OddsGame_$23425",
+                                "typeString": "contract OddsGame"
                               }
                             }
                           ],
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                                "typeString": "contract ChanceGame"
+                                "typeIdentifier": "t_contract$_OddsGame_$23425",
+                                "typeString": "contract OddsGame"
                               }
                             ],
                             "id": 22538,
@@ -4129,16 +4129,16 @@
                             "referencedDeclaration": -28,
                             "src": "8014:4:16",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                              "typeString": "contract ChanceGame"
+                              "typeIdentifier": "t_contract$_OddsGame_$23425",
+                              "typeString": "contract OddsGame"
                             }
                           }
                         ],
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                              "typeString": "contract ChanceGame"
+                              "typeIdentifier": "t_contract$_OddsGame_$23425",
+                              "typeString": "contract OddsGame"
                             }
                           ],
                           "id": 22645,
@@ -4718,7 +4718,7 @@
                           "src": "8254:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_type$_t_struct$_Bet_$22484_storage_ptr_$",
-                            "typeString": "type(struct ChanceGame.Bet storage pointer)"
+                            "typeString": "type(struct OddsGame.Bet storage pointer)"
                           }
                         },
                         "id": 22689,
@@ -4744,7 +4744,7 @@
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_memory_ptr",
-                          "typeString": "struct ChanceGame.Bet memory"
+                          "typeString": "struct OddsGame.Bet memory"
                         }
                       }
                     ],
@@ -4752,7 +4752,7 @@
                       "argumentTypes": [
                         {
                           "typeIdentifier": "t_struct$_Bet_$22484_memory_ptr",
-                          "typeString": "struct ChanceGame.Bet memory"
+                          "typeString": "struct OddsGame.Bet memory"
                         }
                       ],
                       "expression": {
@@ -4764,7 +4764,7 @@
                         "src": "8243:5:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                         }
                       },
                       "id": 22663,
@@ -4777,7 +4777,7 @@
                       "src": "8243:10:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Bet_$22484_storage_$dyn_storage_ptr_$_t_struct$_Bet_$22484_storage_$returns$__$bound_to$_t_array$_t_struct$_Bet_$22484_storage_$dyn_storage_ptr_$",
-                        "typeString": "function (struct ChanceGame.Bet storage ref[] storage pointer,struct ChanceGame.Bet storage ref)"
+                        "typeString": "function (struct OddsGame.Bet storage ref[] storage pointer,struct OddsGame.Bet storage ref)"
                       }
                     },
                     "id": 22690,
@@ -4972,7 +4972,7 @@
                         "src": "8954:5:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                         }
                       },
                       "id": 22704,
@@ -5011,7 +5011,7 @@
                           "src": "9010:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 22713,
@@ -5131,7 +5131,7 @@
                           "src": "9089:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 22718,
@@ -5345,7 +5345,7 @@
                       "storageLocation": "storage",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                        "typeString": "struct ChanceGame.Bet"
+                        "typeString": "struct OddsGame.Bet"
                       },
                       "typeName": {
                         "id": 22733,
@@ -5361,7 +5361,7 @@
                         "src": "9380:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet"
+                          "typeString": "struct OddsGame.Bet"
                         }
                       },
                       "visibility": "internal"
@@ -5378,7 +5378,7 @@
                       "src": "9398:5:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                        "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                        "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                       }
                     },
                     "id": 22737,
@@ -5402,7 +5402,7 @@
                     "src": "9398:12:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                      "typeString": "struct ChanceGame.Bet storage ref"
+                      "typeString": "struct OddsGame.Bet storage ref"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
@@ -5429,7 +5429,7 @@
                         "src": "9453:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 22740,
@@ -5520,7 +5520,7 @@
                       "src": "9518:3:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                        "typeString": "struct ChanceGame.Bet storage pointer"
+                        "typeString": "struct OddsGame.Bet storage pointer"
                       }
                     },
                     "id": 22748,
@@ -5635,7 +5635,7 @@
                           "src": "9602:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                            "typeString": "struct ChanceGame.Bet storage pointer"
+                            "typeString": "struct OddsGame.Bet storage pointer"
                           }
                         },
                         "id": 22756,
@@ -5767,7 +5767,7 @@
                           "src": "9734:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                            "typeString": "struct ChanceGame.Bet storage pointer"
+                            "typeString": "struct OddsGame.Bet storage pointer"
                           }
                         },
                         "id": 22768,
@@ -5794,7 +5794,7 @@
                           "src": "9746:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                            "typeString": "struct ChanceGame.Bet storage pointer"
+                            "typeString": "struct OddsGame.Bet storage pointer"
                           }
                         },
                         "id": 22770,
@@ -5821,7 +5821,7 @@
                           "src": "9758:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                            "typeString": "struct ChanceGame.Bet storage pointer"
+                            "typeString": "struct OddsGame.Bet storage pointer"
                           }
                         },
                         "id": 22772,
@@ -5943,7 +5943,7 @@
                         "src": "9831:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 22781,
@@ -6005,7 +6005,7 @@
                         "src": "9862:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 22787,
@@ -6034,7 +6034,7 @@
                         "src": "9878:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 22789,
@@ -6074,7 +6074,7 @@
                           "src": "9920:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                            "typeString": "struct ChanceGame.Bet storage pointer"
+                            "typeString": "struct OddsGame.Bet storage pointer"
                           }
                         },
                         "id": 22798,
@@ -6109,7 +6109,7 @@
                           "src": "9899:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                            "typeString": "struct ChanceGame.Bet storage pointer"
+                            "typeString": "struct OddsGame.Bet storage pointer"
                           }
                         },
                         "id": 22795,
@@ -6183,7 +6183,7 @@
                           "src": "9968:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                            "typeString": "struct ChanceGame.Bet storage pointer"
+                            "typeString": "struct OddsGame.Bet storage pointer"
                           }
                         },
                         "id": 22804,
@@ -7074,7 +7074,7 @@
                       "storageLocation": "storage",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                        "typeString": "struct ChanceGame.Bet"
+                        "typeString": "struct OddsGame.Bet"
                       },
                       "typeName": {
                         "id": 22881,
@@ -7090,7 +7090,7 @@
                         "src": "11573:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet"
+                          "typeString": "struct OddsGame.Bet"
                         }
                       },
                       "visibility": "internal"
@@ -7107,7 +7107,7 @@
                       "src": "11591:5:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                        "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                        "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                       }
                     },
                     "id": 22885,
@@ -7131,7 +7131,7 @@
                     "src": "11591:12:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                      "typeString": "struct ChanceGame.Bet storage ref"
+                      "typeString": "struct OddsGame.Bet storage ref"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
@@ -7181,7 +7181,7 @@
                       "src": "11631:3:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                        "typeString": "struct ChanceGame.Bet storage pointer"
+                        "typeString": "struct OddsGame.Bet storage pointer"
                       }
                     },
                     "id": 22890,
@@ -7222,7 +7222,7 @@
                         "src": "11666:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 22893,
@@ -7313,7 +7313,7 @@
                       "src": "11731:3:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                        "typeString": "struct ChanceGame.Bet storage pointer"
+                        "typeString": "struct OddsGame.Bet storage pointer"
                       }
                     },
                     "id": 22901,
@@ -7413,7 +7413,7 @@
                       "src": "11884:3:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                        "typeString": "struct ChanceGame.Bet storage pointer"
+                        "typeString": "struct OddsGame.Bet storage pointer"
                       }
                     },
                     "id": 22909,
@@ -7477,7 +7477,7 @@
                       "src": "11925:3:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                        "typeString": "struct ChanceGame.Bet storage pointer"
+                        "typeString": "struct OddsGame.Bet storage pointer"
                       }
                     },
                     "id": 22914,
@@ -7542,7 +7542,7 @@
                       "src": "11975:3:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                        "typeString": "struct ChanceGame.Bet storage pointer"
+                        "typeString": "struct OddsGame.Bet storage pointer"
                       }
                     },
                     "id": 22919,
@@ -7952,7 +7952,7 @@
                             "src": "12496:3:16",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                              "typeString": "struct ChanceGame.Bet storage pointer"
+                              "typeString": "struct OddsGame.Bet storage pointer"
                             }
                           },
                           "id": 22947,
@@ -8298,7 +8298,7 @@
                           "src": "12886:3:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                            "typeString": "struct ChanceGame.Bet storage pointer"
+                            "typeString": "struct OddsGame.Bet storage pointer"
                           }
                         },
                         "id": 22978,
@@ -8465,7 +8465,7 @@
                         "src": "13096:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 22989,
@@ -8527,7 +8527,7 @@
                         "src": "13127:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 22995,
@@ -8585,7 +8585,7 @@
                         "src": "13163:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 23001,
@@ -8643,7 +8643,7 @@
                         "src": "13205:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage_ptr",
-                          "typeString": "struct ChanceGame.Bet storage pointer"
+                          "typeString": "struct OddsGame.Bet storage pointer"
                         }
                       },
                       "id": 23007,
@@ -9091,7 +9091,7 @@
                           "src": "14298:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 23059,
@@ -9115,7 +9115,7 @@
                         "src": "14298:12:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref"
                         }
                       },
                       "id": 23060,
@@ -9174,7 +9174,7 @@
                           "src": "14338:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 23066,
@@ -9198,7 +9198,7 @@
                         "src": "14338:12:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref"
                         }
                       },
                       "id": 23067,
@@ -9257,7 +9257,7 @@
                           "src": "14381:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 23073,
@@ -9281,7 +9281,7 @@
                         "src": "14381:12:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref"
                         }
                       },
                       "id": 23074,
@@ -9340,7 +9340,7 @@
                           "src": "14434:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 23080,
@@ -9364,7 +9364,7 @@
                         "src": "14434:12:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref"
                         }
                       },
                       "id": 23081,
@@ -9423,7 +9423,7 @@
                           "src": "14487:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 23087,
@@ -9447,7 +9447,7 @@
                         "src": "14487:12:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref"
                         }
                       },
                       "id": 23088,
@@ -9506,7 +9506,7 @@
                           "src": "14531:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 23094,
@@ -9530,7 +9530,7 @@
                         "src": "14531:12:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref"
                         }
                       },
                       "id": 23095,
@@ -9589,7 +9589,7 @@
                           "src": "14575:5:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_struct$_Bet_$22484_storage_$dyn_storage",
-                            "typeString": "struct ChanceGame.Bet storage ref[] storage ref"
+                            "typeString": "struct OddsGame.Bet storage ref[] storage ref"
                           }
                         },
                         "id": 23101,
@@ -9613,7 +9613,7 @@
                         "src": "14575:12:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Bet_$22484_storage",
-                          "typeString": "struct ChanceGame.Bet storage ref"
+                          "typeString": "struct OddsGame.Bet storage ref"
                         }
                       },
                       "id": 23102,
@@ -10755,16 +10755,16 @@
                           "referencedDeclaration": -28,
                           "src": "15901:4:16",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                            "typeString": "contract ChanceGame"
+                            "typeIdentifier": "t_contract$_OddsGame_$23425",
+                            "typeString": "contract OddsGame"
                           }
                         }
                       ],
                       "expression": {
                         "argumentTypes": [
                           {
-                            "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                            "typeString": "contract ChanceGame"
+                            "typeIdentifier": "t_contract$_OddsGame_$23425",
+                            "typeString": "contract OddsGame"
                           }
                         ],
                         "id": 23178,
@@ -10903,16 +10903,16 @@
                             "referencedDeclaration": -28,
                             "src": "16146:4:16",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                              "typeString": "contract ChanceGame"
+                              "typeIdentifier": "t_contract$_OddsGame_$23425",
+                              "typeString": "contract OddsGame"
                             }
                           }
                         ],
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                              "typeString": "contract ChanceGame"
+                              "typeIdentifier": "t_contract$_OddsGame_$23425",
+                              "typeString": "contract OddsGame"
                             }
                           ],
                           "id": 23193,
@@ -12020,16 +12020,16 @@
                             "referencedDeclaration": -28,
                             "src": "18993:4:16",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                              "typeString": "contract ChanceGame"
+                              "typeIdentifier": "t_contract$_OddsGame_$23425",
+                              "typeString": "contract OddsGame"
                             }
                           }
                         ],
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                              "typeString": "contract ChanceGame"
+                              "typeIdentifier": "t_contract$_OddsGame_$23425",
+                              "typeString": "contract OddsGame"
                             }
                           ],
                           "id": 23302,
@@ -12170,16 +12170,16 @@
                               "referencedDeclaration": -28,
                               "src": "19092:4:16",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                                "typeString": "contract ChanceGame"
+                                "typeIdentifier": "t_contract$_OddsGame_$23425",
+                                "typeString": "contract OddsGame"
                               }
                             }
                           ],
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                                "typeString": "contract ChanceGame"
+                                "typeIdentifier": "t_contract$_OddsGame_$23425",
+                                "typeString": "contract OddsGame"
                               }
                             ],
                             "id": 23313,
@@ -12573,16 +12573,16 @@
                                 "referencedDeclaration": -28,
                                 "src": "19648:4:16",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                                  "typeString": "contract ChanceGame"
+                                  "typeIdentifier": "t_contract$_OddsGame_$23425",
+                                  "typeString": "contract OddsGame"
                                 }
                               }
                             ],
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                                  "typeString": "contract ChanceGame"
+                                  "typeIdentifier": "t_contract$_OddsGame_$23425",
+                                  "typeString": "contract OddsGame"
                                 }
                               ],
                               "id": 23355,
@@ -12935,16 +12935,16 @@
                             "referencedDeclaration": -28,
                             "src": "19861:4:16",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                              "typeString": "contract ChanceGame"
+                              "typeIdentifier": "t_contract$_OddsGame_$23425",
+                              "typeString": "contract OddsGame"
                             }
                           }
                         ],
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                              "typeString": "contract ChanceGame"
+                              "typeIdentifier": "t_contract$_OddsGame_$23425",
+                              "typeString": "contract OddsGame"
                             }
                           ],
                           "id": 23371,
@@ -13231,16 +13231,16 @@
                                 "referencedDeclaration": -28,
                                 "src": "20064:4:16",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                                  "typeString": "contract ChanceGame"
+                                  "typeIdentifier": "t_contract$_OddsGame_$23425",
+                                  "typeString": "contract OddsGame"
                                 }
                               }
                             ],
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_contract$_ChanceGame_$23425",
-                                  "typeString": "contract ChanceGame"
+                                  "typeIdentifier": "t_contract$_OddsGame_$23425",
+                                  "typeString": "contract OddsGame"
                                 }
                               ],
                               "id": 23399,
@@ -13614,7 +13614,7 @@
           {
             "baseName": {
               "id": 22384,
-              "name": "IChanceGame",
+              "name": "IOddsGame",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 23552,
               "src": "469:11:16"
@@ -13672,7 +13672,7 @@
             "src": "534:8:16"
           }
         ],
-        "canonicalName": "ChanceGame",
+        "canonicalName": "OddsGame",
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
@@ -13685,7 +13685,7 @@
           224,
           23552
         ],
-        "name": "ChanceGame",
+        "name": "OddsGame",
         "nameLocation": "455:10:16",
         "scope": 23426,
         "usedErrors": [

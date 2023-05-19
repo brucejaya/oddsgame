@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import './IChanceGame.sol';
+import './IOddsGame.sol';
 
 import 'chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol';
 import 'openzeppelin-contracts/contracts/access/Ownable.sol';
@@ -10,7 +10,7 @@ import 'openzeppelin-contracts/contracts/security/ReentrancyGuard.sol';
 import 'openzeppelin-contracts/contracts/security/Pausable.sol';
 import 'openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol';
 
-contract ChanceGame is IChanceGame, VRFV2WrapperConsumerBase, Ownable, ReentrancyGuard, Pausable {
+contract OddsGame is IOddsGame, VRFV2WrapperConsumerBase, Ownable, ReentrancyGuard, Pausable {
     
     ////////////////
     // USING

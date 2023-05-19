@@ -11,7 +11,7 @@ import "chainlink/contracts/src/v0.8/tests/MockV3Aggregator.sol";
 import "chainlink/contracts/src/v0.4/LinkToken.sol";
 import "chainlink/contracts/src/v0.8/vrf/VRFV2Wrapper.sol"; 
 
-contract ChanceGameTest is Test {
+contract OddsGameTest is Test {
 
 	// Contracts
     Utils public _utils;

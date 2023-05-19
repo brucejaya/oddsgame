@@ -311,10 +311,10 @@
     "refundBet(uint256)": "e1fdb4b4"
   },
   "ast": {
-    "absolutePath": "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/IChanceGame.sol",
+    "absolutePath": "/mnt/c/Users/44783/Desktop/PROJECTS/oddsgame/src/IOddsGame.sol",
     "id": 23553,
     "exportedSymbols": {
-      "IChanceGame": [
+      "IOddsGame": [
         23552
       ]
     },
@@ -1596,14 +1596,14 @@
         ],
         "abstract": false,
         "baseContracts": [],
-        "canonicalName": "IChanceGame",
+        "canonicalName": "IOddsGame",
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
           23552
         ],
-        "name": "IChanceGame",
+        "name": "IOddsGame",
         "nameLocation": "72:11:17",
         "scope": 23553,
         "usedErrors": [
